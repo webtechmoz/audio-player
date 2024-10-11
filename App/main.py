@@ -7,6 +7,10 @@ def main(page: ft.Page):
     page.title = 'Audio Player'
     page.theme_mode = ft.ThemeMode.DARK
     page.padding = ft.padding.all(0)
+    page.window.width = 350
+    page.window.height = 720
+    page.window.maximizable = False
+    page.window.resizable = False
 
     home = Home(page=page)
 

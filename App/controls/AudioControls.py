@@ -9,11 +9,12 @@ class AudioControls(ft.Container):
         self,
         page: ft.Page
     ):
+        
         super().__init__()
         self.width = page.width
         self.height = page.height * 0.20
         self.bgcolor = ft.colors.with_opacity(0.4, 'white')
-        self.top = page.height - (self.height + 70)
+        self.top = page.height - (self.height + 70 if page.platform.value == 'android' else self.height + 50)
         self.border_radius = ft.border_radius.only(
             top_left=8,
             top_right=8
@@ -39,10 +40,10 @@ class AudioControls(ft.Container):
                     controls=[
                         ft.Stack(
                             controls=[
-                                ProgressBar(
+                                pg_1 := ProgressBar(
                                     width=page.width
                                 ),
-                                ProgressBar(
+                                pg_2 := ProgressBar(
                                     width=page.width * 0.4,
                                     bgcolor=ft.colors.RED
                                 )
@@ -95,6 +96,9 @@ class AudioControls(ft.Container):
             ],
             spacing=15
         )
+
+        self.pg_1 = pg_1
+        self.pg_2 = pg_2
 
 class ProgressBar(ft.Container):
     def __init__(

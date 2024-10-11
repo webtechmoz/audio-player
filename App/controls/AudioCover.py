@@ -12,7 +12,7 @@ class AudioCover(ft.Container):
         self.height = page.height
         self.content = ft.Stack(
             controls=[
-                ft.Container(
+                cover_img := ft.Container(
                     image=ft.DecorationImage(
                         src=image_src,
                         fit=ft.ImageFit.COVER
@@ -26,3 +26,5 @@ class AudioCover(ft.Container):
                 )
             ]
         )
+    
+        self.cover_img = cover_img
